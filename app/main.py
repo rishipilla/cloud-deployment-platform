@@ -1,10 +1,17 @@
-from fastapi import FastAPI
+import os
 from datetime import datetime, timezone
+
+from fastapi import FastAPI
+
+
+APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
+APP_ENVIRONMENT = os.getenv("APP_ENVIRONMENT", "development")
+
 
 app = FastAPI(
     title="Cloud Deployment Platform",
     description="Production-style application used to demonstrate CI/CD and container deployment.",
-    version="1.0.0",
+    version=APP_VERSION,
 )
 
 
@@ -13,7 +20,7 @@ def root():
     return {
         "service": "cloud-deployment-platform",
         "status": "running",
-        "version": "1.0.0",
+        "version": APP_VERSION,
     }
 
 
@@ -29,6 +36,6 @@ def health():
 @app.get("/version")
 def version():
     return {
-        "version": "1.0.0",
-        "environment": "development",
+        "version": APP_VERSION,
+        "environment": APP_ENVIRONMENT,
     }
