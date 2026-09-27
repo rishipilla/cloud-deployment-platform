@@ -38,4 +38,6 @@ def version():
     return {
         "version": APP_VERSION,
         "environment": APP_ENVIRONMENT,
+        "release": "1.2.0",
     }
+

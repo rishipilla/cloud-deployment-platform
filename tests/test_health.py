@@ -35,5 +35,7 @@ def test_version():
 
     data = response.json()
 
-    assert data["version"] == "1.0.0"
-    assert data["environment"] == "development"
+    assert data["version"] == "1.1.0"
+    assert data["environment"] == "production"
+    assert data["release"] == "1.2.0"
+
