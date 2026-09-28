@@ -39,3 +39,16 @@ def test_version():
     assert data["environment"] == "production"
     assert data["release"] == "1.2.0"
 
+
+def test_metrics():
+    response = client.get("/metrics")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["service"] == "cloud-deployment-platform"
+    assert data["status"] == "operational"
+    assert "environment" in data
+    assert "version" in data
+    assert "timestamp" in data

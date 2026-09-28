@@ -41,3 +41,13 @@ def version():
         "release": "1.2.0",
     }
 
+
+@app.get("/metrics")
+def metrics():
+    return {
+        "service": "cloud-deployment-platform",
+        "status": "operational",
+        "environment": APP_ENVIRONMENT,
+        "version": APP_VERSION,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
